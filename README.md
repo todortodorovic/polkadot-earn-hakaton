@@ -42,27 +42,6 @@ By lowering entry barriers and centralizing opportunities, Polkadot Earn:
 ✅ **Attracts diverse contributors** - researchers, students, marketers, not just developers
 ✅ **Increases visibility** - marketing bounties and university research amplify Polkadot's narrative
 
-## Reference: Solana Superteam Success
-
-Superteam Balkan distributed just ~$240k and achieved:
-- 73 approved grants (avg. $2,300)
-- 30 university grants (avg. $1,700)
-- **100+ new teams onboarded** as contributors
-- Multiple successful projects launched
-
-## Tech Stack
-
-**Backend**
-- Express.js + TypeScript
-- Prisma ORM + SQLite
-- JWT authentication
-- RESTful API
-
-**Frontend**
-- Next.js 15 + React 19
-- Tailwind CSS
-- TypeScript
-- shadcn/ui components
 
 ## Getting Started
 
@@ -100,20 +79,6 @@ Frontend runs on `http://localhost:3000`
 **Test User**
 - Email: `user@example.com`
 - Password: `user123`
-
-## Current Status
-
-✅ **MVP Complete:**
-- Grant listing and detail pages
-- User authentication and registration
-- Application submission system
-- Admin dashboard for application review
-- Approve/reject workflow
-
-🚧 **In Progress:**
-- Bounties section
-- Jobs board
-- News & events feed
 
 ## Vision
 
