@@ -38,17 +38,6 @@ router.post('/', async (req: AuthRequest, res) => {
       return res.status(400).json({ error: 'Application deadline has passed' })
     }
 
-    const existingApplication = await prisma.application.findFirst({
-      where: {
-        userId: req.user!.userId,
-        grantId: grantId,
-      },
-    })
-
-    if (existingApplication) {
-      return res.status(400).json({ error: 'You have already applied for this grant' })
-    }
-
     const application = await prisma.application.create({
       data: {
         userId: req.user!.userId,

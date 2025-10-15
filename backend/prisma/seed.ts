@@ -40,11 +40,11 @@ async function main() {
   // Hardcodovani grantovi
   const grants = [
     {
-      title: 'Infrastructure Grant',
-      description: 'Funding for critical infrastructure projects that enhance the Polkadot ecosystem. This includes node infrastructure, indexers, explorers, and other essential tools.',
-      amount: 50000,
-      category: 'Infrastructure',
-      requirements: 'Technical expertise in blockchain infrastructure, clear roadmap, experienced team, open-source commitment',
+      title: 'Smart Contract Mini-Grants',
+      description: 'Build innovative smart contracts and dApps on Polkadot parachains using ink! or EVM-compatible contracts. Perfect for early-stage projects, MVPs, and proof-of-concepts that need funding to validate their ideas on Astar, Moonbeam, and Phala.',
+      amount: 10000,
+      category: 'Smart Contracts',
+      requirements: 'Project description and use case, technical architecture overview, milestone breakdown (2-3 months), prior experience or proof of concept',
       deadline: new Date('2025-12-31'),
     },
     {
