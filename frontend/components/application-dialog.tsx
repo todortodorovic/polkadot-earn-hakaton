@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { X, CheckCircle2 } from "lucide-react"
 import type { Grant } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
+import { apiClient } from "@/lib/api/client"
 
 interface ApplicationDialogProps {
   grant: Grant
@@ -69,9 +70,42 @@ export function ApplicationDialog({ grant, open, onOpenChange }: ApplicationDial
     }
   }
 
-  const handleSubmit = () => {
-    console.log("[v0] Form submitted:", formData)
-    setIsSubmitted(true)
+  const handleSubmit = async () => {
+    try {
+      const milestones = [
+        formData.milestone1 && { title: "Milestone 1", description: formData.milestone1, duration: "", amount: 0 },
+        formData.milestone2 && { title: "Milestone 2", description: formData.milestone2, duration: "", amount: 0 },
+        formData.milestone3 && { title: "Milestone 3", description: formData.milestone3, duration: "", amount: 0 },
+      ].filter(Boolean) as any[]
+
+      // Map frontend mock grant ID to backend grant ID
+      const grantIdMap: Record<string, string> = {
+        "1": "infrastructure-grant",
+        "2": "dapp-development-grant",
+        "3": "research-grant",
+        "4": "community-&-education-grant",
+        "5": "security-&-auditing-grant",
+        "6": "ux/ui-design-grant",
+        "7": "cross-chain-integration-grant",
+        "8": "developer-tools-grant",
+      }
+
+      const backendGrantId = grantIdMap[grant.id] || grant.id
+
+      await apiClient.createApplication({
+        grantId: backendGrantId,
+        projectTitle: formData.projectTitle,
+        projectDescription: formData.projectDescription,
+        teamInfo: formData.teamInfo || undefined,
+        milestones,
+        requestedAmount: parseFloat(formData.compensation),
+        walletAddress: formData.walletAddress,
+      })
+
+      setIsSubmitted(true)
+    } catch (error: any) {
+      alert('Failed to submit application: ' + (error.message || 'Unknown error'))
+    }
   }
 
   const handleClose = () => {

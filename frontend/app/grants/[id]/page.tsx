@@ -6,13 +6,14 @@ import { GrantDetailContent } from "@/components/grant-detail-content"
 import { mockGrants } from "@/lib/mock-data"
 
 interface GrantDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function GrantDetailPage({ params }: GrantDetailPageProps) {
-  const grant = mockGrants.find((g) => g.id === params.id)
+export default async function GrantDetailPage({ params }: GrantDetailPageProps) {
+  const { id } = await params
+  const grant = mockGrants.find((g) => g.id === id)
 
   if (!grant) {
     notFound()
